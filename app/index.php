@@ -1,16 +1,29 @@
 <?php
 
-$host = "mysql"; // Le host est le nom du service, présent dans le docker-compose.yml
+$host = "mysql";
 $dbname = "my-wonderful-website";
 $charset = "utf8";
 $port = "3306";
 ?>
 
 <html>
+
 <head>
-    <title>Drenthe College docker web server</title>
+
+<title>Registratie</title>
 </head>
 <body>
-<h2>Hello world!</h2>
+    <h2>Registratieformulier</h2>
+    <form action="register.php" method="post">
+        <label for="username">Gebruikersnaam:</label><br>
+        <input type="text" id="username" name="username" required><br><br>
+        <label for="password">Wachtwoord:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+        <input type="submit" value="Registreren">
+    </form>
+
+<body>
+
 </body>
+
 </html>
