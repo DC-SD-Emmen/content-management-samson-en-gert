@@ -48,14 +48,16 @@ function verify_password() {
     $stmt->execute();
     $user = $stmt->fetch();
     if ($user && password_verify($password, $user['password'])) {
-        header("Location: users.php");
+        session_start();
+        $_SESSION['username'] = $user['username'];
+        $_SESSION['user_id'] = $user['id'];
+        header("Location: users.php?id=" . $user['username'] . $user['id']);
         exit;
-        echo "U bent ingelogd.";
-    exit;
     } else {
-    echo "Gebruikersnaam of wachtwoord is onjuist.";
+        echo "Gebruikersnaam of wachtwoord is onjuist.";
     }
 }
+     
  
 ?>
 

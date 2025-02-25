@@ -9,6 +9,20 @@ spl_autoload_register(function ($class) {
     include __DIR__ . '/' . $class . '.php';
 });
 
+session_start(); // Start de session 
+
+// Check if the user is logged in
+if (!isset($_SESSION['username'])) {
+    header("Location: inloggen.php");
+    exit;
+}
+
+if (isset($_GET['action']) && $_GET['action'] == 'logout') {
+    session_destroy();
+    header("Location: inloggen.php");
+    exit;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +36,7 @@ spl_autoload_register(function ($class) {
 <body>
     <form>
         <p>U bent ingelogd.</p>
-        <p>Heeft u al een account? <a href="inloggen.php">Log hier in</a></p>
+        <p> <a href="users.php?action=logout">uitloggen</a></p>
     </form>
 </body>
 </html>
