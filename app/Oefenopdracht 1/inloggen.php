@@ -72,13 +72,17 @@ function verify_password() {
 <body>
     <h2>Inloggen</h2>
     <form action="" method="post">
+
         <label for="username">Gebruikersnaam:</label>
-        <input type="text" id="username" name="username" required>
-        <br>
+
+        <input type="text" class="username2" name="username" required>
+
         <label for="password">Wachtwoord:</label>
-        <input type="password" id="password" name="password" required>
-        <br>
-        <button type="submit">Inloggen</button>
+
+        <input type="password" class="password2" name="password" required>
+        
+        <input type="submit" name="submit" value="Inloggen">
+
         <p>Heeft u nog geen account? <a href="index.php">Registreer hier</a></p>
     </form>
 </body>

@@ -35,6 +35,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
 </head>
 <body>
     <form>
+        <h2>kom <?php echo $_SESSION['username']; ?></h2>
         <p>U bent ingelogd.</p>
         <p> <a href="users.php?action=logout">uitloggen</a></p>
     </form>

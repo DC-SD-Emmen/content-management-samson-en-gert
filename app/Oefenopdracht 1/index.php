@@ -3,22 +3,23 @@
 <html>
 
 <head>
-
-<title>Registratie</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="index.css">
+<title>registratie</title>
 </head>
 </body>
 
     <h2>registratie </h2>
-    <form action="index.php" method="post">
+    <form action="" method="post">
 
-        <label for="username">Gebruikersnaam:</label><br>
+        <label for="username">Gebruikersnaam:</label>
 
-        <input type="text" id="username" name="username" required><br><br>
+        <input type="text" class="username1" name="username" required>
 
-        <label for="password">Wachtwoord:</label><br>
+        <label for="password">Wachtwoord:</label>
 
-        <input type="password" id="password" name="password" required><br><br>
+        <input type="password" class="password1" name="password" required>
 
         <input type="submit" name="submit" value="registratie">
 

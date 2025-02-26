@@ -40,7 +40,16 @@ label {
 
 input[type="text"],
 input[type="password"] {
-    width: 100%;
+    width: 405px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="text"].username2,
+input[type="password"].password2 {
+    width: 383px;
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
