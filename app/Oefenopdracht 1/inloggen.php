@@ -36,7 +36,7 @@ function verify_password() {
     // Validate input
     if (empty($username) || empty($password)) {
         echo "Gebruikersnaam en wachtwoord zijn verplicht.";
-        exit;
+        exit; 
     }
     $database = new Database();
     $conn = $database->getConnection();
