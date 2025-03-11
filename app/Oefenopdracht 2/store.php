@@ -34,12 +34,12 @@
             <div class=store id=RegistreerStore> <p onclick="window.location.href='registratie.php'">REGISTREER</p></div>
             <div class=store id=InloggenStore> <p onclick="window.location.href='inloggen.php'">INLOGGEN</p></div>
         </div>
-        <div class="sideBar gridItem" id="gridItem2">
+        <!-- <div class="sideBar gridItem" id="gridItem2">
             <div class="sideBarItem">
                 <?php
                 $gameManager->getList('storedetail.php');
                 ?>
-            </div>
+            </div> -->
         </div>
         <div class="imageShelf gridItem" id="gridItem3">
 

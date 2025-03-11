@@ -32,6 +32,7 @@
                 <div class=detailpages id=storeLibrary> <p onclick="window.location.href='store.php'">STORE</p> </div>
                 <div class=detailpages id=libraryLibrary> <p>LIBRARY</p> </div>
                 <div class=detailpages id=add_gameLibrary> <p onclick="window.location.href='add_game.php'">ADD GAME</p> </div>
+                <div class=library id=wishlistLibrary> <p onclick="window.location.href='wishlist.php'">WISHLIST</p></div>
                 <div class=detailpages id=uitloggenLibrary ><p> <a href="index.php?action=logout">LOGOUT</a></p></div>
                 
             </div>
@@ -54,7 +55,7 @@
                     echo "<p>Geen ID opgegeven.</p>";
                 }
                 ?>
-                <a href="index.php" class="back-button">Terug naar overzicht</a>
+                <a href="index.php" class="back-button">back to Library</a>
             </div>
 
         </div>  

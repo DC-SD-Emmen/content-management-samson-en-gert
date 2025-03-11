@@ -10,18 +10,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['registratie'])) {
         $username = htmlspecialchars($_POST['username']);
         $emailaddress = htmlspecialchars($_POST['emailaddress']);
-        $password = htmlspecialchars($_POST['password']);
+        $password = password_hash(htmlspecialchars($_POST['password']), PASSWORD_DEFAULT);
+        
+        $result = $userManager->registerUser($username, $emailaddress, $password);
 
-        if (empty($username) || empty($emailaddress) || empty($password)) {
-            echo "Gebruikersnaam, e-mailadres en wachtwoord zijn verplicht.";
+        if ($result) {
+            echo "U bent geregistreerd.";
         } else {
-            $result = $userManager->registerUser($username, $password, $emailaddress);
-
-            if ($result) {
-                echo "U bent geregistreerd.";
-            } else {
-                echo "Er is een fout opgetreden bij het registreren.";
-            }
+            echo "Er is een fout opgetreden bij het registreren.";
         }
     }
 }

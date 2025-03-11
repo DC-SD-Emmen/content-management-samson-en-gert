@@ -47,6 +47,7 @@
             <div class=add_game id=storeAdd_game> <p onclick="window.location.href='store.php'">STORE</p> </div>
             <div class=add_game id=libraryAdd_game> <p onclick="window.location.href='index.php'">LIBRARY</p> </div>
             <div class=add_game id=add_gameAdd_game> <p>ADD GAME</p> </div>
+            <div class=library id=wishlistLibrary> <p onclick="window.location.href='wishlist.php'">WISHLIST</p></div>
             <div class=add_game id=uitloggenLibrary ><p> <a href="index.php?action=logout">LOGOUT</a></p></div>
         </div>
         <div class="gridAdd_game">

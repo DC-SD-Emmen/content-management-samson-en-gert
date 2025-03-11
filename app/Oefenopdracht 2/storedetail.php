@@ -35,15 +35,7 @@
                 <div class=storedetailpages id=InloggenStoreDetailpages> <p onclick="window.location.href='inloggen.php'">INLOGGEN</p></div>
             </div>
 
-        <div class="sideBar gridItem">
-            <div class="sideBarItem">
-                <?php
-                    $gameManager->getList();
-                ?>
-            </div>
-        </div>
-        
-            <div class="detail-container">
+            <div class="storeDetailContainer">
                 <?php
                 // Haal gamegegevens op via ID
                 if (isset($_GET['id'])) {
@@ -53,7 +45,8 @@
                     echo "<p>Geen ID opgegeven.</p>";
                 }
                 ?>
-                <a href="store.php" class="back-button">Terug naar overzicht</a>
+                <a href="wishlist.php?action=add_to_wishlist&game_id=<?php echo $id; ?>" class="add_to_wishlist">Add to wishlist</a>
+                <a href="store.php" class="back-button" >back to store</a>
             </div>
 
         </div>  

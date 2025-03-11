@@ -1,7 +1,11 @@
 <?php
+
 spl_autoload_register(function ($class) {
     include 'classes/' . $class . '.php';
 });
+session_start();
+
+
 
 $db = new Database(); 
 $userManager = new UserManager($db->getConnection());
@@ -15,8 +19,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user = $userManager->getUser($username);
 
         if ($user && password_verify($password, $user['password'])) {
-            session_start();
-            $_SESSION['username'] = $username;
+            $_SESSION['userid'] = $user['id'];
+            $_SESSION['username'] = $user['username'];
             header("Location: index.php");
             exit;
         } else {

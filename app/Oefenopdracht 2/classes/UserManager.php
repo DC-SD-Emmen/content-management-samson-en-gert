@@ -40,33 +40,56 @@ class UserManager {
     }
     // registratie
 
-    public function registerUser($username, $password, $emailaddress) {
-        // Validate input
-        if (empty($username) || empty($password) || empty($emailaddress)) {
-            return false;
+    public function registerUser($username, $email, $password) {
+
+        $stmt = $this->conn->prepare("SELECT COUNT(*) FROM users WHERE username = :username");
+        $stmt->bindParam(':username', $_POST['username']);
+        $stmt->execute();
+        $userExists = $stmt->fetchColumn();
+
+        if ($userExists) {
+            header("Location: registratie.php");
+            echo "Username already exists. Please choose a different username.";
+            exit();
         }
 
-        // $database = new Database();
-        // $conn = $database->getConnection();
-
-        $password = password_hash($password, PASSWORD_DEFAULT);
-
-        $stmt = $this->conn->prepare("INSERT INTO users (username, password, emailaddress) VALUES (:username, :password, :emailaddress)");
-        $stmt->bindParam(':username', $username);
-        $stmt->bindParam(':emailaddress', $emailaddress);
-        $stmt->bindParam(':password', $password);
-        $stmt->execute();
-
-        // Sanitize input
-        $username = htmlspecialchars($username, ENT_QUOTES, 'UTF-8');
-        $password = htmlspecialchars($password, ENT_QUOTES, 'UTF-8');
-        $emailaddress = htmlspecialchars($emailaddress, ENT_QUOTES, 'UTF-8');
-
-        if ($stmt->execute()) {
-            return true;
-        } else {
-            return false;
+        try{
+            $stmt = $this->conn->prepare("INSERT INTO users (username, emailaddress, password) VALUES (:username, :emailaddress, :password)");
+            $stmt->bindParam(':username', $username);
+            $stmt->bindParam(':emailaddress', $email);
+            $stmt->bindParam(':password', $password);
+            $stmt->execute();
+            echo "Registration success!";
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            exit();
         }
     }
+    
+public function connection_user_games($user_id, $game_id) {
+
+    $checkSql = "SELECT COUNT(*) FROM user_games WHERE user_id = :user_id AND game_id = :game_id";
+                $checkStmt = $this->conn->prepare($checkSql);
+                $checkStmt->bindParam(':user_id', $user_id);
+                $checkStmt->bindParam(':game_id', $game_id);
+                $checkStmt->execute();
+
+                if ($checkStmt->fetchColumn() > 0) {
+                    $message = date('Y-m-d H:i:s') . " - Connection between user and game already exists\n";
+
+                    return false;
+                }
+    
+    $checkStmt = $this->conn->prepare($checkSql);
+
+
+    $sql= "INSERT INTO user_games (user_id, game_id) VALUES (:user_id, :game_id)";
+    $stmt = $this->conn->prepare($sql);
+    $stmt->bindParam(':user_id', $user_id);
+    $stmt->bindParam(':game_id', $game_id);
+    $stmt->execute();
+    }
+
 }
+
 ?>
