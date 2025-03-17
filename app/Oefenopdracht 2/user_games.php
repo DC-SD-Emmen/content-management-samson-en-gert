@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 spl_autoload_register(function ($class) {
     include 'classes/' . $class . '.php';
 });
@@ -37,4 +37,4 @@ echo "Gebruikers die de game met ID 4 spelen:<br>";
 foreach ($users as $user) {
     echo $user['username'] . "<br>";
 }
-?>
+?> -->

@@ -5,10 +5,15 @@ class GameManager {
 
 
 
-    public function __construct(Database $db) {
-        $this->conn = $db->getConnection();
+    public function __construct($db) {
+        if ($db instanceof PDO) {
+            $this->conn = $db;
+        } elseif (method_exists($db, 'getConnection')) {
+            $this->conn = $db->getConnection();
+        } else {
+            throw new TypeError('Expected PDO or a class with getConnection() method.');
+        }
         include_once 'Game.php';
-
     }
    
 

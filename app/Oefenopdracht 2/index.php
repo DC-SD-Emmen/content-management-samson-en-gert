@@ -12,7 +12,24 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
     header("Location: inloggen.php");
     exit;
 }
+
+spl_autoload_register(function ($class) {
+    include 'classes/' . $class . '.php';
+});
+
+$db = new Database();
+
+$gameManager = new GameManager($db);
+
+
+if(isset($_POST['submit'])) {
+
+    $gameManager->file_upload($_FILES["fileToUpload"]);
+    $gameManager->addGame($_POST, $_FILES["fileToUpload"]['name']);
+    }
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,41 +39,9 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
     <link rel="stylesheet" href="eindopdracht.css">
 </head>
 <body>
-
-    <?php
-        spl_autoload_register(function ($class) {
-            include 'classes/' . $class . '.php';
-        });
-
-        $db = new Database();
-
-        $gameManager = new GameManager($db);
-
-
-        if(isset($_POST['submit'])) {
-
-            $gameManager->file_upload($_FILES["fileToUpload"]);
-            $gameManager->addGame($_POST, $_FILES["fileToUpload"]['name']);
-            }
-
-
-            // foreach($gameManager as $gameManager ) {
-            //          echo "<tr>";
-            //          echo "<td>" . $gameManager-> getTitle() . "</td>";
-            //          echo "<td>" . $gameManager-> getGenre() . "</td>";
-            //          echo "<td>" . $gameManager-> getPlatform() . "</td>";
-            //          echo "<td>" . $gameManager-> getRelease_year() . "</td>";
-            //          echo "<td>" . $gameManager-> getRating() . "</td>";
-            //          echo "<td>" . $gameManager-> getDescription() . "</td>";
-            //          echo "<td>" . $gameManager-> getDeveloper() . "</td>";
-            //          echo "</tr>";
-            //      }
-        
-    ?>
     
      <div class="gridLibrary">
         <div class="gridItem" id="gridItem1">
-            <div class=library id=storeLibrary> <p onclick="window.location.href='store.php'">STORE</p> </div>
             <div class=library id=libraryLibrary> <p>LIBRARY</p> </div>
             <div class=library id=add_gameLibrary> <p onclick="window.location.href='add_game.php'">ADD GAME</p> </div>
             <div class=library id=wishlistLibrary> <p onclick="window.location.href='wishlist.php'">WISHLIST</p></div>
@@ -64,16 +49,16 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
         </div>
         <div class="sideBar gridItem" id="gridItem2">
             <div class="sideBarItem">
+
                 <?php
                 $gameManager->getList();
                 ?>
+
             </div>
         </div>
         <div class="imageShelf gridItem" id="gridItem3">
 
                 <?php
-
-
                 $gameManager->get_data_list_picture();
                 ?>
                 

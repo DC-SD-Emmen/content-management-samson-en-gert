@@ -66,30 +66,36 @@ class UserManager {
         }
     }
     
-public function connection_user_games($user_id, $game_id) {
+    public function connection_user_games($user_id, $game_id) {
 
-    $checkSql = "SELECT COUNT(*) FROM user_games WHERE user_id = :user_id AND game_id = :game_id";
-                $checkStmt = $this->conn->prepare($checkSql);
-                $checkStmt->bindParam(':user_id', $user_id);
-                $checkStmt->bindParam(':game_id', $game_id);
-                $checkStmt->execute();
+        $checkSql = "SELECT COUNT(*) FROM user_games WHERE user_id = :user_id AND game_id = :game_id";
+                    $checkStmt = $this->conn->prepare($checkSql);
+                    $checkStmt->bindParam(':user_id', $user_id);
+                    $checkStmt->bindParam(':game_id', $game_id);
+                    $checkStmt->execute();
 
-                if ($checkStmt->fetchColumn() > 0) {
-                    $message = date('Y-m-d H:i:s') . " - Connection between user and game already exists\n";
+                    if ($checkStmt->fetchColumn() > 0) {
+                        $message = date('Y-m-d H:i:s') . " - Connection between user and game already exists\n";
 
-                    return false;
-                }
-    
-    $checkStmt = $this->conn->prepare($checkSql);
+                        return false;
+                    }
+        
+        $checkStmt = $this->conn->prepare($checkSql);
 
 
-    $sql= "INSERT INTO user_games (user_id, game_id) VALUES (:user_id, :game_id)";
-    $stmt = $this->conn->prepare($sql);
-    $stmt->bindParam(':user_id', $user_id);
-    $stmt->bindParam(':game_id', $game_id);
-    $stmt->execute();
+        $sql= "INSERT INTO user_games (user_id, game_id) VALUES (:user_id, :game_id)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':user_id', $user_id);
+        $stmt->bindParam(':game_id', $game_id);
+        $stmt->execute();
     }
-
+    public function removeFromWishlist($user_id, $game_id) {
+        $sql = "DELETE FROM user_games WHERE user_id = :user_id AND game_id = :game_id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':user_id', $user_id);
+        $stmt->bindParam(':game_id', $game_id);
+        $stmt->execute();
+    }
 }
 
 ?>

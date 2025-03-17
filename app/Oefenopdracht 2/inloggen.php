@@ -42,8 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 <div class="gridLibrary">
         <div class="gridItem" id="gridItem1">
-            <div class=inloggen id=storeInloggen> <p onclick="window.location.href='store.php'">STORE</p> </div>
-            <div class=inloggen id=libraryInloggen> <p>LIBRARY</p> </div>
+            <div class=inloggen id=libraryInloggen> <p onclick="window.location.href='index.php'">LIBRARY</p> </div>
             <div class=inloggen id=add_gameInloggen> <p onclick="window.location.href='add_game.php'">ADD GAME</p> </div>
             <div class=inloggen id=RegistreerInloggen> <p onclick="window.location.href='registratie.php'">REGISTER</p></div>
             <div class=inloggen id=InloggenInloggen> <p>LOGIN</p></div>

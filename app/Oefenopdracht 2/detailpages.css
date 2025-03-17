@@ -62,6 +62,7 @@ body {
 }
 
 /* Terugknop */
+.remove_to_wishlist,
 .add_to_wishlist,
 .back-button {
     display: inline-block;

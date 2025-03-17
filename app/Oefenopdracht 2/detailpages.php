@@ -29,10 +29,9 @@
     
         <div class="gridLibrary">
             <div class="gridItem" id="gridItem1">
-                <div class=detailpages id=storeLibrary> <p onclick="window.location.href='store.php'">STORE</p> </div>
-                <div class=detailpages id=libraryLibrary> <p>LIBRARY</p> </div>
+                <div class=detailpages id=libraryLibrary> <p onclick="window.location.href='index.php'">LIBRARY</p> </div>
                 <div class=detailpages id=add_gameLibrary> <p onclick="window.location.href='add_game.php'">ADD GAME</p> </div>
-                <div class=library id=wishlistLibrary> <p onclick="window.location.href='wishlist.php'">WISHLIST</p></div>
+                <div class=detailpages id=wishlistLibrary> <p onclick="window.location.href='wishlist.php'">WISHLIST</p></div>
                 <div class=detailpages id=uitloggenLibrary ><p> <a href="index.php?action=logout">LOGOUT</a></p></div>
                 
             </div>
@@ -55,6 +54,7 @@
                     echo "<p>Geen ID opgegeven.</p>";
                 }
                 ?>
+                <a href="wishlist.php?action=add_to_wishlist&game_id=<?php echo $id; ?>" class="add_to_wishlist">Add to wishlist</a>
                 <a href="index.php" class="back-button">back to Library</a>
             </div>
 
