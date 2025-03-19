@@ -9,8 +9,10 @@
 
     $gameManager = new GameManager($db);
 
+    
     if(isset($_POST['submit'])) {
 
+        // als submit is ingedrukt dan word er een game toegevoegd 
         $gameManager->file_upload($_FILES["fileToUpload"]);
         $gameManager->addGame($_POST, $_FILES["fileToUpload"]['name']);
         }
@@ -21,6 +23,7 @@
             exit;
         }
 
+        // maakt de session kapot als je op logout klikt en stuurt je naar de inlogpagina
         if (isset($_GET['action']) && $_GET['action'] == 'logout') {
             session_destroy();
             header("Location: inloggen.php");
@@ -45,8 +48,9 @@
     
         <div class="gridItem">
             <div class=add_game id=libraryAdd_game> <p onclick="window.location.href='index.php'">LIBRARY</p> </div>
-            <div class=add_game id=add_gameAdd_game> <p>ADD GAME</p> </div>
+            <div class=add_game id=add_gameAdd_game> <p onclick="window.location.href='add_game.php'">ADD GAME</p> </div>
             <div class=add_game id=wishlistLibrary> <p onclick="window.location.href='wishlist.php'">WISHLIST</p></div>
+            <div class=library id=wishlistLibrary> <p onclick="window.location.href='account.php'">ACCOUNT SETTINGS</p></div>
             <div class=add_game id=uitloggenLibrary ><p> <a href="index.php?action=logout">LOGOUT</a></p></div>
         </div>
         <div class="gridAdd_game">
@@ -102,12 +106,13 @@
             
 
                 public function displayGames() {
-        
+                    
+                
                     if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $personen = $db->add_game();
                     if ($_SERVER["REQUEST_METHOD"] == "POST") 
 
-
+                    
                     foreach($personen as $persoon ) {
                     echo "<tr>";
                     echo "<td>" . $persoon-> getTitle() . "</td>";

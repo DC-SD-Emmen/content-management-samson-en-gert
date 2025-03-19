@@ -7,13 +7,17 @@
 
 /* top border  */
 .gridItem {
-    display: flex;
     background-color: #25252d;
     padding: 10px;
     padding-top: 15px;
     padding-bottom: 15px;
     color: #c7d5e0;
 }
+
+#gridItemInloggen {
+    display: flex;
+}
+
 
 .gridLibrary {
     display: grid;
@@ -28,6 +32,7 @@
 .registreer,
 .inloggen,
 .wishlist,
+.account,
 .library {
     margin-right: 20px;
     cursor: pointer;
@@ -42,6 +47,7 @@
 #RegistreerRegistree,
 #InloggenInloggen,
 #storeStoreDetailpages,
+#accountAccount,
 #storeStore {
     margin-right: 20px;
     cursor: pointer;
@@ -60,6 +66,7 @@
 .store:hover,
 .storedetailpages:hover,
 .wishlist:hover,
+.account:hover,
 .Library:hover {
     color: #ffffff;
 }
@@ -142,6 +149,8 @@ a {
 .library,
 .detailpages,
 .add_game,
+.wishlist,
+.account,
 a {
     display: inline-block;
     transition: transform 0.5s ease;
@@ -152,6 +161,8 @@ a {
 .library:hover,
 .detailpages:hover,
 .add_game:hover,
+.wishlist:hover,
+.account:hover,
 a:hover,
 .imgBig:hover {
     transform: scale(1.05);
@@ -167,7 +178,7 @@ img,
 /* add game */
 
 .gridAdd_game {
-    background-color: #2f2f3b;
+    background-color: #1b2838;
     color: #ffffff;
     width: 100%;
     padding: 20px;
@@ -176,11 +187,12 @@ img,
 }
 
 form {
+    justify-content: center;
     background-color: #2a475e;
     padding: 20px;
     border-radius: 8px;
     width: 400px;
-    margin: 20px 500px;
+    margin: 20px auto;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -310,6 +322,29 @@ tr:hover {
     color: #ffffff;
 }
 
+.wishlistUsername {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+/* Account */
+
+.usernameAccount {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
 
 
 /* media */
@@ -331,15 +366,22 @@ tr:hover {
     }
 }
 
-/* @media only screen and (max-width: 500px) {
-    #gridItem3 {
+@media only screen and (max-width: 500px) {
+    #gridItem2 {
         display: none;
     }
 }
 
-@media only screen and (max-width: 500px) {
-    #gridItem2 {
-        height: 500px;
-        width: 500px;
+@media only screen and (max-width: 600px) {
+    .WishlistItem {
+        display: block;
+        flex: none;
     }
-} */
+}
+
+@media only screen and (max-width: 450px) {
+    #gridItem3 {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

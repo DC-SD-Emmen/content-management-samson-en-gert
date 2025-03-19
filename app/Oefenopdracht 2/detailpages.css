@@ -77,6 +77,10 @@ body {
     transition: background-color 0.3s;
 }
 
+.remove_to_wishlist {
+    width: 250px;
+}
+
 .back-button:hover {
     background-color: #4296d4;
 }

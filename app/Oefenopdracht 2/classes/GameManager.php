@@ -3,8 +3,7 @@
 class GameManager {
     private $conn;
 
-
-
+    // Constructor with database connection as parameter
     public function __construct($db) {
         if ($db instanceof PDO) {
             $this->conn = $db;
@@ -138,9 +137,9 @@ class GameManager {
             $uploadOk = 0;
         }
 
-        // Only allow certain file types (JPG, PNG, JPEG, GIF)
-        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
-            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        // Only allow certain file types (JPG, PNG, JPEG, WEBP GIF)
+        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" && $imageFileType != "WEBP") {
+            echo "Sorry, only JPG, JPEG, WEBP, PNG & GIF files are allowed.";
             $uploadOk = 0;
         }
 
